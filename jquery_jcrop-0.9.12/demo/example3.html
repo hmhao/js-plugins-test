@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="jQuery图像照片剪裁插件Jcrop" />
+<title>jQuery图像照片剪裁插件Jcrop</title>
+<link rel="stylesheet" href="../css/jquery.Jcrop-0.9.12.css" type="text/css" />
+<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../js/jquery.Jcrop-0.9.12.js"></script>
+<style type="text/css">
+.rel{position: relative;}
+.crop_preview{position:absolute; left:520px; top:0; width:120px; height:120px; overflow:hidden;}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//记得放在jQuery(window).load(...)内调用，否则Jcrop无法正确初始化
+		$("#xuwanting").Jcrop({
+			onChange:showPreview,
+			onSelect:showPreview,
+			aspectRatio:1
+		});	
+		//简单的事件处理程序，响应自onChange,onSelect事件，按照上面的Jcrop调用
+		function showPreview(coords){
+			if(parseInt(coords.w) > 0){
+				//计算预览区域图片缩放的比例，通过计算显示区域的宽度(与高度)与剪裁的宽度(与高度)之比得到
+				var rx = $("#preview_box").width() / coords.w; 
+				var ry = $("#preview_box").height() / coords.h;
+				//通过比例值控制图片的样式与显示
+				$("#crop_preview").css({
+					width:Math.round(rx * $("#xuwanting").width()) + "px",	//预览图片宽度为计算比例值与原图片宽度的乘积
+					height:Math.round(rx * $("#xuwanting").height()) + "px",	//预览图片高度为计算比例值与原图片高度的乘积
+					marginLeft:"-" + Math.round(rx * coords.x) + "px",
+					marginTop:"-" + Math.round(ry * coords.y) + "px"
+				});
+			}
+		}
+	});
+</script>
+</head>
+
+<body>
+<h1>Jcrop照片剪裁插件高宽比例固定/剪裁效果预览演示</h1>
+<div class="rel">
+    <img id="xuwanting" src="../image/xuwanting.jpg" />
+    <span id="preview_box" class="crop_preview"><img id="crop_preview" src="../image/xuwanting.jpg" /></span>
+</div>
+<p><strong>比例锁定且图片剪裁预览演示实例。</strong>这是一个非常直观的演示，那个小小的预览窗格效果的实现使用了一个jQuery式的回调函数，完全在Jcrop之外。这种接口类型在创建缩略图或是头像时非常有用。onChange事件处理程序用于更新在预览窗格中的视图。 </p>
+<p><a href="../index.html">&lt;&lt; 返回Demo实例首页</a></p>
+<strong>JavaScript代码</strong>
+<pre>
+$(document).ready(function(){
+    //记得放在jQuery(window).load(...)内调用，否则Jcrop无法正确初始化
+    $("#xuwanting").Jcrop({
+        onChange:showPreview,
+        onSelect:showPreview,
+        aspectRatio:1
+    }); 
+    //简单的事件处理程序，响应自onChange,onSelect事件，按照上面的Jcrop调用
+    function showPreview(coords){
+        if(parseInt(coords.w) > 0){
+            //计算预览区域图片缩放的比例，通过计算显示区域的宽度(与高度)与剪裁的宽度(与高度)之比得到
+            var rx = $("#preview_box").width() / coords.w; 
+            var ry = $("#preview_box").height() / coords.h;
+            //通过比例值控制图片的样式与显示
+            $("#crop_preview").css({
+                width:Math.round(rx * $("#xuwanting").width()) + "px",  //预览图片宽度为计算比例值与原图片宽度的乘积
+                height:Math.round(rx * $("#xuwanting").height()) + "px",  //预览图片高度为计算比例值与原图片高度的乘积
+                marginLeft:"-" + Math.round(rx * coords.x) + "px",
+                marginTop:"-" + Math.round(ry * coords.y) + "px"
+            });
+        }
+    }
+});
+</pre>
+</body>
+</html>

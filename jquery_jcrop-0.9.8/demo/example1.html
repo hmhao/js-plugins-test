@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="jQuery图像照片剪裁插件Jcrop" />
+<title>jQuery图像照片剪裁插件Jcrop</title>
+<link rel="stylesheet" href="../css/jquery.Jcrop-0.9.8.css" type="text/css" />
+<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../js/jquery.browser.js"></script>
+<script type="text/javascript" src="../js/jquery.Jcrop-0.9.8.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#xuwanting").Jcrop();						   
+	});
+</script>
+</head>
+
+<body>
+<h1 class="zxx_title">Jcrop照片剪裁插件最基本演示</h1>
+<img id="xuwanting" src="../image/xuwanting.jpg" />
+<p>此实例展示了最基本的用法，直接使用"选择器.Jcrop()"的效果。这里并没有绑定其他的事件，仅仅是一个很表面的剪裁效果。</p>
+<p><a href="../index.html">&lt;&lt; 返回Demo实例首页</a></p>
+<strong>JavaScript代码</strong>
+<pre>
+$(document).ready(function(){
+    $("#xuwanting").Jcrop();                           
+});
+</pre>
+</body>
+</html>

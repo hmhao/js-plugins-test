@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="jQuery图像照片剪裁插件Jcrop" />
+<title>jQuery图像照片剪裁插件Jcrop</title>
+<link rel="stylesheet" href="../css/jquery.Jcrop-0.9.8.css" type="text/css" />
+<link rel="stylesheet" href="../css/jquery.Jcrop-0.9.12.css" type="text/css" />
+<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../js/jquery.Jcrop-0.9.12.js"></script>
+<style type="text/css">
+.animate_btns{padding-top:20px;}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//初始化一个剪裁大小，左上角坐标(100,100)，右下角为(200,200)
+		var api = $.Jcrop("#xuwanting",{
+			setSelect: [100,100,200,200] //setSelect是Jcrop插件内部已定义的运动方法
+		});
+		var i, ac;
+		//处理程序阻止事件的进行
+		function nothing(e){
+			e.stopPropagation();
+			e.preventDefault();
+			return false;
+		};
+		//返回动画回调的事件处理程序
+		function anim_handler(ac){
+			return function(e){
+				api.animateTo(ac);
+				return nothing(e);
+			};
+		};
+		//设置一些动画的坐标
+		var ac = {
+			animate1:[50,50,450,320],
+			animate2:[74,81,218,228],
+			animate3:[8,8,32,360],
+			animate4:[316,150,470,230],
+			animate5:[80,160,500,190]
+		};
+		//附加相应的事件处理程序
+		for(var i in ac){
+			$("#"+i).click(anim_handler(ac[i]));	
+		}
+		//单击“重新设置”按钮后
+		$("#reset").click(function(e){
+			api.setSelect([200,125,300,225]);
+			return nothing(e);						   
+		});
+	});
+</script>
+</head>
+
+<body>
+<h1>Jcrop照片剪裁插件API演示/动画效果</h1>
+<img id="xuwanting" src="../image/xuwanting.jpg" />
+<div class="animate_btns">
+    <input type="button" value="动画1" id="animate1" />
+    <input type="button" value="动画2" id="animate2" />
+    <input type="button" value="动画3" id="animate3" />
+    <input type="button" value="动画4" id="animate4" />
+    <input type="button" value="动画5" id="animate5" />
+    <input type="button" value="重新设置" id="reset" />
+</div>
+<p><strong>API功能演示。</strong>单击上面的按钮显示不同的动画效果，这是比较初级的API演示Demo，增加了一些额外功能的API演示见（<a href="example5.html">高级API的演示</a>）。 </p>
+<p><a href="../index.html">&lt;&lt; 返回Demo实例首页</a></p>
+<strong>JavaScript代码</strong>
+<pre>
+$(document).ready(function(){
+    //初始化一个剪裁大小，左上角坐标(100,100)，右下角为(200,200)
+    var api = $.Jcrop("#xuwanting",{
+        setSelect: [100,100,200,200] //setSelect是Jcrop插件内部已定义的运动方法
+    });
+    var i, ac;
+    //处理程序阻止事件的进行
+    function nothing(e){
+        e.stopPropagation();
+        e.preventDefault();
+        return false;
+    };
+    //返回动画回调的事件处理程序
+    function anim_handler(ac){
+        return function(e){
+            api.animateTo(ac);
+            return nothing(e);
+        };
+    };
+    //设置一些动画的坐标
+    var ac = {
+        animate1:[50,50,450,320],
+        animate2:[74,81,218,228],
+        animate3:[8,8,32,360],
+        animate4:[316,150,470,230],
+        animate5:[80,160,500,190]
+    };
+    //附加相应的事件处理程序
+    for(var i in ac){
+        $("#"+i).click(anim_handler(ac[i]));    
+    }
+    //单击“重新设置”按钮后
+    $("#reset").click(function(e){
+        api.setSelect([200,125,300,225]);
+        return nothing(e);                         
+    });
+});
+</pre>
+</body>
+</html>

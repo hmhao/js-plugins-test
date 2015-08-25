@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="jQuery图像照片剪裁插件Jcrop" />
+<title>jQuery图像照片剪裁插件Jcrop</title>
+<link rel="stylesheet" href="../css/jquery.Jcrop-0.9.8.css" type="text/css" />
+<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="../js/jquery.browser.js"></script>
+<script type="text/javascript" src="../js/jquery.Jcrop-0.9.8.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//记得放在jQuery(window).load(...)内调用，否则Jcrop无法正确初始化
+		$("#xuwanting").Jcrop({
+			onChange:showCoords,
+			onSelect:showCoords
+		});	
+		//简单的事件处理程序，响应自onChange,onSelect事件，按照上面的Jcrop调用
+		function showCoords(obj){
+			$("#x1").val(obj.x);
+			$("#y1").val(obj.y);
+			$("#x2").val(obj.x2);
+			$("#y2").val(obj.y2);
+			$("#w").val(obj.w);
+			$("#h").val(obj.h);
+		}
+	});
+</script>
+</head>
+
+<body>
+<img id="xuwanting" src="../image/xuwanting.jpg" />
+<br />
+<form>
+    <b>x1</b><input type="text" size="4" id="x1" />
+    <b>y1</b><input type="text" size="4" id="y1" />
+    <b>x2</b><input type="text" size="4" id="x2" />
+    <b>y2</b><input type="text" size="4" id="y2" />
+    <b>w</b><input type="text" size="4" id="w" />
+    <b>h</b><input type="text" size="4" id="h" />
+</form>
+<p><strong>基本事件处理程序实例。</strong>这里将一些表单值绑定到了事件处理程序上，当选择或大小改变的时候，表单内的值也会发生实时的改变，x1,y1表示左上角坐标，x2,y2表示右下角坐标，w,h表示剪裁的高度和宽度。多亏了Jcrop的onChange事件处理程序，一切才得以实现。</p>
+<p><a href="../index.html">&lt;&lt; 返回Demo实例首页</a></p>
+<strong>JavaScript代码</strong>
+<pre>
+$(document).ready(function(){
+    //记得放在jQuery(window).load(...)内调用，否则Jcrop无法正确初始化
+    $("#xuwanting").Jcrop({
+        onChange:showCoords,
+        onSelect:showCoords
+    }); 
+    //简单的事件处理程序，响应自onChange,onSelect事件，按照上面的Jcrop调用
+    function showCoords(obj){
+        $("#x1").val(obj.x);
+        $("#y1").val(obj.y);
+        $("#x2").val(obj.x2);
+        $("#y2").val(obj.y2);
+        $("#w").val(obj.w);
+        $("#h").val(obj.h);
+    }
+});
+</pre>
+</body>
+</html>
