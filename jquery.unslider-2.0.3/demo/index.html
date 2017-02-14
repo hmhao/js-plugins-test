@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>unslider演示</title>
+    <link rel="stylesheet" href="../dist/css/unslider.css">
+    <link rel="stylesheet" href="../dist/css/unslider-dots.css">
+    <script src="./jquery-1.12.4.min.js"></script>
+    <script src="../src/js/unslider.js"></script>
+    <style>
+    html, body {
+        font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+        background: #5592b5;
+    }
+    
+    .banner {
+        position: relative;
+        overflow: auto;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>unslider 使用演示</h1>
+    <span>本插件可配合jquery.event.swipe.js来实现触摸响应，具体请参见jquery.event.swipe.js的使用说明。</span>
+    <hr>
+    <!-- example_01 begin -->
+    <h2>示例 1</h2>
+    <span>最简单的使用，写好 ul 后调用 'unslider()' 方法即可。</span>
+    <div class="banner" id="b01">
+        <ul>
+            <li>This is a slide.</li>
+            <li>This is another slide.</li>
+            <li>This is a final slide.</li>
+        </ul>
+    </div>
+    <script>
+    $(document).ready(function(e) {
+        $('#b01').unslider({
+            autoplay: true,
+            arrows: false,
+            nav: false
+        });
+    });
+    </script>
+    <!-- example_01 end -->
+    <hr>
+    <!-- example_02 begin -->
+    <h2>示例 2</h2>
+    <span>使用固定大小的图片，并限制容器大小</span>
+    <div class="banner" id="b02">
+        <ul>
+            <li><img src="./images/01.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/02.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/03.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/04.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/05.jpg" alt="" width="640" height="480"></li>
+        </ul>
+    </div>
+    <script>
+    $(document).ready(function(e) {
+        $('#b02').unslider({
+            autoplay: true,
+            arrows: false,
+            nav: false
+        });
+    });
+    </script>
+    <!-- example_02 end -->
+    <hr>
+    <!-- example_03 begin -->
+    <h2>示例 3</h2>
+    <span>在上一步的基础上，加上圆点（指示器）。这里使用 CSS3 来添加，若要兼容 IE8 及以下，请使用图片背景添加。</span>
+    <div class="banner" id="b03">
+        <ul>
+            <li><img src="./images/01.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/02.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/03.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/04.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/05.jpg" alt="" width="640" height="480"></li>
+        </ul>
+    </div>
+    <script>
+    $(document).ready(function(e) {
+        $('#b03').unslider({
+            autoplay: true,
+            arrows: false,
+            nav: true
+        });
+    });
+    </script>
+    <!-- example_03 end -->
+    <hr>
+    <!-- example_04 begin -->
+    <h2>示例 4</h2>
+    <span>在上一步基础上，加上左右箭头。</span>
+    <div class="banner" id="b04">
+        <ul>
+            <li><img src="./images/01.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/02.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/03.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/04.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/05.jpg" alt="" width="640" height="480"></li>
+        </ul>
+    </div>
+    <script>
+    $(document).ready(function(e) {
+        var unslider04 = $('#b04').unslider({
+            autoplay: true,
+            arrows: {
+                //  Unslider default behaviour
+                prev: '<a class="unslider-arrow prev" title="Previous slide"><img class="arrow" id="al" src="./images/arrowl.png" alt="prev"></a>',
+                next: '<a class="unslider-arrow next" title="Next slide"><img class="arrow" id="ar" src="./images/arrowr.png" alt="next"></a>'
+            },
+            nav: true
+        });
+    });
+    </script>
+    <!-- example_04 end -->
+    <hr>
+    <!-- example_05 begin -->
+    <h2>示例 5</h2>
+    <span>对轮播状态进行操作。</span>
+    <div class="banner" id="b05">
+        <ul>
+            <li><img src="./images/01.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/02.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/03.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/04.jpg" alt="" width="640" height="480"></li>
+            <li><img src="./images/05.jpg" alt="" width="640" height="480"></li>
+        </ul>
+    </div>
+    <br>
+    <button id="stop">停止</button>
+    <button id="start">开始</button>
+    <button id="move">转到第二张（可有回调函数）</button>
+    <script>
+    $(document).ready(function(e) {
+        var unslider05 = $('#b05').unslider({
+            autoplay: true,
+            arrows: {
+                //  Unslider default behaviour
+                prev: '<a class="unslider-arrow prev" title="Previous slide"><img class="arrow" id="al" src="./images/arrowl.png" alt="prev"></a>',
+                next: '<a class="unslider-arrow next" title="Next slide"><img class="arrow" id="ar" src="./images/arrowr.png" alt="next"></a>'
+            },
+            nav: true
+        });
+        var data05 = unslider05.data('unslider');
+        $("#stop").click(function() {
+            data05.stop();
+        });
+        $("#start").click(function() {
+            data05.start();
+        });
+        $("#move").click(function() {
+            data05.animate(1, function() {
+                console.log('animate done');
+            });
+        });
+
+    });
+    </script>
+    <!-- example_05 end -->
+    <hr>
+    <!-- example_06 begin -->
+    <h2>示例 6</h2>
+    <span>调整为响应式</span>
+    <div class="banner" id="b06">
+        <ul>
+            <li><img class="sliderimg" src="./images/01.jpg" alt="" width="100%"></li>
+            <li><img class="sliderimg" src="./images/02.jpg" alt="" width="100%"></li>
+            <li><img class="sliderimg" src="./images/03.jpg" alt="" width="100%"></li>
+            <li><img class="sliderimg" src="./images/04.jpg" alt="" width="100%"></li>
+            <li><img class="sliderimg" src="./images/05.jpg" alt="" width="100%"></li>
+        </ul>
+    </div>
+    <script>
+    function imgReload() {
+        var imgHeight = 0;
+        var wtmp = $("body").width();
+        $("#b06 ul li").each(function() {
+            $(this).css({
+                width: wtmp + "px"
+            });
+        });
+
+        $("#b06 .sliderimg").each(function() {
+            $(this).css({
+                width: wtmp + "px"
+            });
+            imgHeight = $(this).height();
+        });
+    }
+
+    $(window).resize(function() {
+        imgReload();
+    });
+
+    $(document).ready(function(e) {
+        imgReload();
+        var unslider06 = $('#b06').unslider({
+            autoplay: true,
+            arrows: {
+                //  Unslider default behaviour
+                prev: '<a class="unslider-arrow prev" title="Previous slide"><img class="arrow" id="al" src="./images/arrowl.png" alt="prev"></a>',
+                next: '<a class="unslider-arrow next" title="Next slide"><img class="arrow" id="ar" src="./images/arrowr.png" alt="next"></a>'
+            },
+            nav: true
+        });
+    });
+    </script>
+    <!-- example_06 end -->
+    <hr>
+    <!-- example_07 begin -->
+    <h2>示例 7</h2>
+    <span>自定义图片指示器及跳转外链</span>
+    <style type="text/css">
+      #b07 .unslider-wrap li{
+          display: none;
+      }
+      
+      #b07 .unslider-wrap li.unslider-active{
+          display: block;
+      }
+
+      #b07.unslider-fade .unslider-wrap li {
+          position:relative;
+      }
+      
+      #b07 .custom-nav {
+          display: inline-block;
+      }
+
+      #b07 .custom-nav li {
+          float: left;
+          margin: 3px;
+          cursor: pointer;
+          position: relative;
+      }
+
+      #b07 .custom-nav .unslider-active {
+          width: 136px;
+          height: 70px;
+          position: absolute;
+          left: 0;
+          top: -3px;
+          border: 3px solid #24baf1;
+      }
+    </style>
+    <div class="banner" id="b07">
+        <ul>
+            <li><a href="http://www.baidu.com?1" target="_blank"><img class="sliderimg" src="./images/01.jpg" alt="" width="100%"></a></li>
+            <li><a href="http://www.baidu.com?2" target="_blank"><img class="sliderimg" src="./images/02.jpg" alt="" width="100%"></a></li>
+            <li><a href="http://www.baidu.com?3" target="_blank"><img class="sliderimg" src="./images/03.jpg" alt="" width="100%"></a></li>
+            <li><a href="http://www.baidu.com?4" target="_blank"><img class="sliderimg" src="./images/04.jpg" alt="" width="100%"></a></li>
+            <li><a href="http://www.baidu.com?5" target="_blank"><img class="sliderimg" src="./images/05.jpg" alt="" width="100%"></a></li>
+            <div style="clear:both;"></div> <!--新添加的空div，它和浮动元素同一级别，且位于最后-->
+        </ul>
+        <ul class="custom-nav">
+          <li><a href="http://www.baidu.com?1" target="_blank"><img class="sliderimg" src="./images/01.jpg" alt="" width="140px" height="70px"><span></span></a></li>
+          <li><a href="http://www.baidu.com?2" target="_blank"><img class="sliderimg" src="./images/02.jpg" alt="" width="140px" height="70px"><span></span></a></li>
+          <li><a href="http://www.baidu.com?3" target="_blank"><img class="sliderimg" src="./images/03.jpg" alt="" width="140px" height="70px"><span></span></a></li>
+          <li><a href="http://www.baidu.com?4" target="_blank"><img class="sliderimg" src="./images/04.jpg" alt="" width="140px" height="70px"><span></span></a></li>
+          <li><a href="http://www.baidu.com?5" target="_blank"><img class="sliderimg" src="./images/05.jpg" alt="" width="140px" height="70px"><span></span></a></li>
+        </ul>
+    </div>
+    <script>
+    $(document).ready(function(e) {
+        var unslider07 = $('#b07').unslider({
+            autoplay: true,
+            nav: false,
+            arrows: false,
+            animation: 'fade'
+        });
+        var data07 = unslider07.data('unslider');
+        //  Listen to slide changes
+        unslider07.on('unslider.change', function(event, index, slide) {
+            //  Cache our link
+            var $me = $('#b07 .custom-nav li').eq(index);
+            //  set it to be active
+            $me.find('span').addClass(data07.options.activeClass);
+            //  Set the right active class, remove any other ones
+            $me.siblings().each(function(){
+                $(this).find('span').removeClass(data07.options.activeClass);
+            });
+        });
+        var customNav = $('#b07 .custom-nav li').hover(function(){
+            //  Cache our link
+            var $me = $(this);
+            //  set it to be active
+            $me.find('span').addClass(data07.options.activeClass);
+            //  Set the right active class, remove any other ones
+            $me.siblings().each(function(){
+                $(this).find('span').removeClass(data07.options.activeClass);
+            });
+            data07.animate($me.index());
+            data07.stop();
+        }, function(){
+            data07.start();
+        });
+        customNav.eq(data07.current).find('span').addClass(data07.options.activeClass);
+    });
+    </script>
+    <!-- example_07 end -->
+</body>
+
+</html>
