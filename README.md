@@ -5,4 +5,4 @@ jQuery Jcrop (official) - Image Cropping Plugin http://deepliquid.com/content/Jc
 jQuery Unslider - The simplest slider http://unslider.com/<br>
 
 # knockout.js
-Basic test demo https://jsfiddle.net/dnf9em02/10/<br>
+Basic test demo https://jsfiddle.net/dnf9em02/17/<br>
